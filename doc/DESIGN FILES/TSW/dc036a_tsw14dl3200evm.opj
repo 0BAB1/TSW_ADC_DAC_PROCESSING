@@ -1,0 +1,37 @@
+(ExpressProject ""
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (File ".\dc036a_tsw14dl3200evm.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (NoModify))
+  (Folder "Outputs")
+  (Folder "Referenced Projects")
+  (PartMRUSelector)
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" ".\dc036a_tsw14dl3200evm.dsn")
+      (Path "Design Resources" ".\dc036a_tsw14dl3200evm.dsn" "SCHEMATIC")
+      (Select "Design Resources" ".\dc036a_tsw14dl3200evm.dsn"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -9 -36 0 200 0 445"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -9 -36 60 1875 60 219")
+        (Scroll "-120 276")
+        (Zoom "100")
+        (Occurrence "/"))
+      (Path
+         "C:\CADENCE_DESIGNS\PCB\DC036\WHITE_FOLDER\DC036A_TSW14DL3200EVM.DSN")
+      (Schematic "SCHEMATIC")
+      (Page "SH11 - BANKS 65-66, SPI/BANK 0")))
+  (MPSSessionName "a0868815"))
