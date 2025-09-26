@@ -1,0 +1,6 @@
+vivado*
+.Xil/
+*.log
+*.vcd
+TSW_TESTS/
+*.ila
