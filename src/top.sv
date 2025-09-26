@@ -60,6 +60,17 @@ module top_tsw_test (
     // Internal single-ended wires after LVDS buffers
     //======================================================
     wire [47:0] lrx_data;
+    logic [11:0] channel_a;
+    logic [11:0] channel_b;
+    logic [11:0] channel_c;
+    logic [11:0] channel_d;
+    
+    always_comb begin : channel_assignements
+        channel_a = lrx_data[11:0];
+        channel_b = lrx_data[23:12];
+        channel_c = lrx_data[35:24];
+        channel_d = lrx_data[47:36];
+    end
 
     //======================================================
     // IBUFDS instances for each LVDS pair
@@ -108,7 +119,10 @@ module top_tsw_test (
     //======================================================
     ila_0 u_ila (
         .clk(clk),
-        .probe0(lrx_data)
+        .probe0(channel_a),
+        .probe1(channel_b),
+        .probe2(channel_c),
+        .probe3(channel_d)
     );
 
 endmodule

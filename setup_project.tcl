@@ -33,8 +33,11 @@ set_property top top_lvds_ila [current_fileset]
 # --------- ILA IP Core ---------
 create_ip -name ila -vendor xilinx.com -library ip -version 6.2 -module_name ila_0
 set_property -dict [list \
-    CONFIG.C_PROBE0_WIDTH {48} \
-    CONFIG.C_NUM_OF_PROBES {1} \
+    CONFIG.C_PROBE0_WIDTH {12} \
+    CONFIG.C_PROBE1_WIDTH {12} \
+    CONFIG.C_PROBE2_WIDTH {12} \
+    CONFIG.C_PROBE3_WIDTH {12} \
+    CONFIG.C_NUM_OF_PROBES {4} \
     CONFIG.C_INPUT_PIPE_STAGES {0} \
 ] [get_ips ila_0]
 
