@@ -4,17 +4,38 @@
 
 # define main clock 
 
-# use CLK_ADC_REF
-# set_property PACKAGE_PIN G37 [get_ports clk_p]
-# set_property PACKAGE_PIN F37 [get_ports clk_n]
-# set_property IOSTANDARD LVDS [get_ports {clk_p clk_n}]
-# create_clock -name sys_clk -period XXX [get_ports clk_p]
+# CLK_ADC_REF
+# set_property PACKAGE_PIN G37 [get_ports CLK125_P]
+# set_property PACKAGE_PIN F37 [get_ports CLK125_N]
+# set_property IOSTANDARD LVDS [get_ports {CLK125_P CLK125_N}]
+# create_clock -name sys_clk -period 1.25 [get_ports CLK125_P]
 
 # use CLK_ONBOARD_125_P onboard TSW 125 mhz clock
-set_property PACKAGE_PIN H36 [get_ports clk_p]
-set_property PACKAGE_PIN G36 [get_ports clk_n]
-set_property IOSTANDARD LVDS [get_ports {clk_p clk_n}]
-create_clock -name sys_clk -period 8 [get_ports clk_p]
+set_property PACKAGE_PIN H36 [get_ports CLK_ONBOARD_125_P]
+set_property PACKAGE_PIN G36 [get_ports CLK_ONBOARD_125_N]
+set_property IOSTANDARD LVDS [get_ports {CLK_ONBOARD_125_P CLK_ONBOARD_125_N}]
+create_clock -name sys_clk -period 8 [get_ports CLK_ONBOARD_125_N]
+
+# ADC Channels clocks
+set_property PACKAGE_PIN AP36 [get_ports RX_CLK0_P]
+set_property PACKAGE_PIN AR36 [get_ports RX_CLK0_N]
+set_property IOSTANDARD LVDS [get_ports {RX_CLK0_P RX_CLK0_N}]
+create_clock -name RX_CLK0 -period 2.5 [get_ports RX_CLK0_P]
+
+set_property PACKAGE_PIN AK23 [get_ports RX_CLK1_P]
+set_property PACKAGE_PIN AL23 [get_ports RX_CLK1_N]
+set_property IOSTANDARD LVDS [get_ports {RX_CLK1_P RX_CLK1_N}]
+create_clock -name RX_CLK1 -period 2.5 [get_ports RX_CLK1_P]
+
+set_property PACKAGE_PIN AL30 [get_ports RX_CLK2_P]
+set_property PACKAGE_PIN AM30 [get_ports RX_CLK2_N]
+set_property IOSTANDARD LVDS [get_ports {RX_CLK2_P RX_CLK2_N}]
+create_clock -name RX_CLK2 -period 2.5 [get_ports RX_CLK2_P]
+
+set_property PACKAGE_PIN AK27 [get_ports RX_CLK3_P]
+set_property PACKAGE_PIN AK28 [get_ports RX_CLK3_N]
+set_property IOSTANDARD LVDS [get_ports {RX_CLK3_P RX_CLK2_N}]
+create_clock -name RX_CLK3 -period 2.5 [get_ports RX_CLK3_P]
 
 # LRX0
 set_property PACKAGE_PIN AM36 [get_ports LRX0_P]

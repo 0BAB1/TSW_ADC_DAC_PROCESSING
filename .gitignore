@@ -4,3 +4,5 @@ vivado*
 *.vcd
 TSW_TESTS/
 *.ila
+Table.xlsx
+.~*
