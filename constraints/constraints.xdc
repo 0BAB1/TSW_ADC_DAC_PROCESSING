@@ -25,17 +25,17 @@ create_clock -name RX_CLK0 -period 2.5 [get_ports RX_CLK0_P]
 set_property PACKAGE_PIN AK23 [get_ports RX_CLK1_P]
 set_property PACKAGE_PIN AL23 [get_ports RX_CLK1_N]
 set_property IOSTANDARD LVDS [get_ports {RX_CLK1_P RX_CLK1_N}]
-create_clock -name RX_CLK1 -period 2.5 [get_ports RX_CLK1_P]
+create_clock -name RX_CLK1 -period 1.25 [get_ports RX_CLK1_P]
 
 set_property PACKAGE_PIN AL30 [get_ports RX_CLK2_P]
 set_property PACKAGE_PIN AM30 [get_ports RX_CLK2_N]
 set_property IOSTANDARD LVDS [get_ports {RX_CLK2_P RX_CLK2_N}]
-create_clock -name RX_CLK2 -period 2.5 [get_ports RX_CLK2_P]
+create_clock -name RX_CLK2 -period 1.25 [get_ports RX_CLK2_P]
 
 set_property PACKAGE_PIN AK27 [get_ports RX_CLK3_P]
 set_property PACKAGE_PIN AK28 [get_ports RX_CLK3_N]
 set_property IOSTANDARD LVDS [get_ports {RX_CLK3_P RX_CLK2_N}]
-create_clock -name RX_CLK3 -period 2.5 [get_ports RX_CLK3_P]
+create_clock -name RX_CLK3 -period 1.25 [get_ports RX_CLK3_P]
 
 # LRX0
 set_property PACKAGE_PIN AM36 [get_ports LRX0_P]

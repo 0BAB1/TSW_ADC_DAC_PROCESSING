@@ -3,16 +3,15 @@
 *  BRH 09/2025
 */
 
-module reciever (
-    // PL (FPGA) CLOCKS
-    input wire CLK_ONBOARD_125_P, input wire CLK_ONBOARD_125_N,
-    // input wire CLK_ADC_REF_P, input wire CLK_ADC_REF_N,
+module sampler (
+    // Input sys clock
+    input wire sys_clk,
 
     // ADC Channels DDR clocks
-    input wire RX_CLK0_P, input wire RX_CLK0_N,
-    input wire RX_CLK1_P, input wire RX_CLK1_N,
-    input wire RX_CLK2_P, input wire RX_CLK2_N,
-    input wire RX_CLK3_P, input wire RX_CLK3_N,
+    input wire ddr_clk0,
+    input wire ddr_clk1,
+    input wire ddr_clk2,
+    input wire ddr_clk3,
 
     // ADC Channels strobes
     input wire RX_STROBE0_P, input wire RX_STROBE0_N,
@@ -81,37 +80,12 @@ module reciever (
     input  wire LRX47_P, input wire LRX47_N,
 
     // data out, sampled at main clk speed
-    output wire [11:0] data_out,
-    output wire sysclk
+    output wire [11:0] data_out
 );
-
-    // ========================
-    // fabric sys clock
-    // ========================
-
-    wire sys_clk;
-    IBUFGDS #(
-        .DIFF_TERM("TRUE"),
-        .IBUF_LOW_PWR("FALSE")
-    ) IBUFGDS_SYSCLK (
-        .I(CLK_ONBOARD_125_P), .IB(CLK_ONBOARD_125_N),
-        .O(sys_clk)
-    );
-    assign sysclk = sys_clk;
 
     // ========================
     // Channel A capture
     // ========================
-
-    // Get bus A LVDS Clock
-    wire rx_a_clk_ibuf;
-    IBUFGDS #(
-        .DIFF_TERM("TRUE"),
-        .IBUF_LOW_PWR("FALSE")
-    ) IBUFGDS_RXCLK (
-        .I(RX_CLK0_P), .IB(RX_CLK0_N),
-        .O(rx_clk_ibuf)
-    );
 
     // Get bus A LVDS 12 input bits
     wire [11:0] lrx_a_ibuf;
@@ -171,7 +145,7 @@ module reciever (
                 // sample N + 1
                 .Q2(lrx_a_q2[j]),
 
-                .C(rx_clk_ibuf),
+                .C(ddr_clk0),
                 // .CB(~rx_clk_ibuf),
                 .D(lrx_a_ibuf[j]),
                 .R(1'b0)
@@ -179,7 +153,7 @@ module reciever (
         end
     endgenerate
     
-    // Sample bus A @ 125MHz
+    
     reg [11:0] lrx_a_sync1, lrx_a_sync2;
 
     always @(posedge sys_clk) begin
